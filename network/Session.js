@@ -1,9 +1,8 @@
 class Session
 {
-    constructor(pin)
+    constructor(id)
     {
-        this.id = pin;
-        this.pin = pin;
+        this.id = id;
         this.clients = new Set; 
     }
 

@@ -4,9 +4,9 @@ const Client = require("./Client");
 
 const Utils = require("../utils/Utils");
 
-const pingTime = 3000;
+const pingTime = process.env.WEBSOCKET_PING_TIME || 30000;
 
-const logPingMessages = false;
+const logPingMessages = process.env.WEBSOCKET_LOG_PINGPONG_MESSAGES || false;
 
 let ws;
 
