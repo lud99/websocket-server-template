@@ -1,7 +1,6 @@
 const WebSocketServer = require("ws").Server;
 
 const Client = require("./Client");
-const Session = require("./Session");
 
 const Utils = require("../utils/Utils");
 
@@ -114,23 +113,6 @@ const disconnectClient = (client) => {
 
     // Terminate the connection
     client.terminate();
-}
-
-const sendResponse = (client, response, originalMessage, sendType = Send.Single) => {
-    
-    // Send back a formatted response with type, success, original message and the data
-    const res = {
-        type: originalMessage.type,
-        success: true,
-
-        originalMessage: originalMessage,
-        data: response
-    }
-
-    if (sendType === Send.Single) 
-        client.send(res);
-    else if (sendType === Send.Broadcast)
-        client.session.broadcast(res);
 }
 
 module.exports = start;
